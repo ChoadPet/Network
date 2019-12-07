@@ -93,14 +93,14 @@
 			path = RequestManager;
 			sourceTree = "<group>";
 		};
-		29248AF8239C451300CE57BC /* Supporting Files */ = {
+		29248AF8239C451300CE57BC /* SupportingFiles */ = {
 			isa = PBXGroup;
 			children = (
 				29DD8D2B239AF89400A2669F /* Assets.xcassets */,
 				29DD8D2D239AF89400A2669F /* LaunchScreen.storyboard */,
 				29DD8D30239AF89400A2669F /* Info.plist */,
 			);
-			path = "Supporting Files";
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 		29DD8D16239AF89200A2669F = {
@@ -129,7 +129,7 @@
 				29DD8D28239AF89200A2669F /* Main.storyboard */,
 				29DD8D44239C079200A2669F /* NetworkManager */,
 				29248AF4239C428A00CE57BC /* Extensions */,
-				29248AF8239C451300CE57BC /* Supporting Files */,
+				29248AF8239C451300CE57BC /* SupportingFiles */,
 			);
 			path = NetworkManager;
 			sourceTree = "<group>";
@@ -444,7 +444,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZNA2424JBU;
-				INFOPLIST_FILE = NetworkManager/Info.plist;
+				INFOPLIST_FILE = NetworkManager/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -463,7 +463,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = ZNA2424JBU;
-				INFOPLIST_FILE = NetworkManager/Info.plist;
+				INFOPLIST_FILE = NetworkManager/SupportingFiles/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

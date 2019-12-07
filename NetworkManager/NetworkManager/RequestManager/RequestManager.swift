@@ -22,7 +22,7 @@ final class RequestManager<Api: ApiProvider> {
     init(session: URLSession = URLSession.shared) {
         self.session = session
     }
-
+    
     
     // MARK: - Private API
     @discardableResult
@@ -30,33 +30,26 @@ final class RequestManager<Api: ApiProvider> {
         return session.dataTask(with: request, completionHandler: completion)
     }
     
-    private func createURLRequest(_ url: URL, method: HTTPMethod, headers: [String: String]?) -> URLRequest {
-        var request = URLRequest(url: url)
-        request.httpMethod = method.rawValue
+    private func createURLRequest(forAPI api: Api) -> URLRequest {
+        var components = URLComponents(url: URL(api: api), resolvingAgainstBaseURL: false)!
+        components.queryItems = api.parameters.map { URLQueryItem(name: $0, value: "\($1)") }
+        components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
         
-        if let headers = headers {
-            for (headerField, value) in headers {
-                request.setValue(value, forHTTPHeaderField: headerField)
-            }
+        var request = URLRequest(url: components.url!)
+        request.httpMethod = api.method.rawValue
+        
+        for (headerField, value) in api.headers {
+            request.setValue(value, forHTTPHeaderField: headerField)
         }
         return request
-    }
-    
-    private func createURLComponents(withURL url: URL, parameters: Parameters) -> URLComponents {
-        var components = URLComponents(url: url, resolvingAgainstBaseURL: false)!
-        components.queryItems = parameters.map { URLQueryItem(name: $0, value: "\($1)") }
-        components.percentEncodedQuery = components.percentEncodedQuery?.replacingOccurrences(of: "+", with: "%2B")
-        return components
     }
 }
 
 extension RequestManager: RequestManagerProvider {
     
     func request(api: Api, completion: @escaping (Result<CustomResponse, Error>) -> Void) {
-        let urlComponents = createURLComponents(withURL: URL(api: api), parameters: api.parameters)
-        let urlRequest = createURLRequest(urlComponents.url!, method: api.method, headers: api.headers)
+        let urlRequest = createURLRequest(forAPI: api)
         
-        // TODO: Remove validation to separate function
         createDataTask(with: urlRequest) { data, response, error in
             guard let data = data,
                 let response = response as? HTTPURLResponse,
