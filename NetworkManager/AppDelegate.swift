@@ -18,8 +18,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         networkManager = NetworkManager()
         
-        let model = ArticleInput(pageSize: 5, page: 1, language: "en", keywordsOrPhrase: "dogs")
-        networkManager.requestNews(model: model) { response in
+        let model1 = ArticleInput(pageSize: 5, page: 1, language: "en", keywordsOrPhrase: "dogs")
+        networkManager.requestEverythingNews(model: model1) { response in
+            
+        }
+        
+        let model2 = ArticleInput(pageSize: 10, page: 1, language: "en", keywordsOrPhrase: "apple")
+        networkManager.requestTopHeadlinesNews(model: model2) { response in
             
         }
         

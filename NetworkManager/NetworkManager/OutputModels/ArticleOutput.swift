@@ -23,8 +23,8 @@ final class NewsEntity: Decodable {
     var articleID = UUID().uuidString
     var author: String?
     var content: String?
-    var articleDescription: String
-    var publishedAt: Date?
+    var articleDescription: String?
+    var publishedAt: String?
     var source: NewsSource?
     var title: String?
     var urlToImage: String?

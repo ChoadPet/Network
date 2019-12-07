@@ -17,14 +17,28 @@ final class NetworkManager {
     }
     
     // MARK: - Public API
-    func requestNews(model: ArticleInput, completion: @escaping (ArticleOutput?) -> Void) {
+    func requestEverythingNews(model: ArticleInput, completion: @escaping (ArticleOutput?) -> Void) {
         request(api: .everything(model: model)) { [weak self] result in
             guard let self = self else { return }
             switch result {
             case .success(let data):
                 let articles = self.decodeData(data, ofType: ArticleOutput.self)
                 completion(articles)
-                print("Articles information: \(String(describing: articles))")
+                print("\(#function) Articles information: \(String(describing: articles))")
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
+    
+    func requestTopHeadlinesNews(model: ArticleInput, completion: @escaping (ArticleOutput?) -> Void) {
+        request(api: .topHeadlines(model: model)) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let data):
+                let articles = self.decodeData(data, ofType: ArticleOutput.self)
+                completion(articles)
+                print("\(#function) Articles information: \(String(describing: articles))")
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -36,6 +50,7 @@ final class NetworkManager {
         let urlComponents = createURLComponents(withURL: api.fullURL, parameters: api.parameters)
         let urlRequest = createURLRequest(urlComponents.url!, method: api.method, headers: api.headers)
         
+        // TODO: Remove validation to separate function
         createDataTask(with: urlRequest) { data, response, error in
             guard let data = data,                            // is there data
                 let response = response as? HTTPURLResponse,  // is there HTTP response
