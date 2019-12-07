@@ -16,16 +16,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         
-        networkManager = NetworkManager()
+        let requestManager = RequestManager<NewsAPI>()
+        networkManager = NetworkManager(requestManager: requestManager)
         
         let model1 = ArticleInput(pageSize: 5, page: 1, language: "en", keywordsOrPhrase: "dogs")
-        networkManager.requestEverythingNews(model: model1) { response in
-            
+        networkManager.provideEverythingNews(model: model1) { result in
+            print(result ?? "No articles getting")
         }
         
         let model2 = ArticleInput(pageSize: 10, page: 1, language: "en", keywordsOrPhrase: "apple")
-        networkManager.requestTopHeadlinesNews(model: model2) { response in
-            
+        networkManager.provideTopHeadlinesNews(model: model2) { result in
+            print(result ?? "No articles getting")
         }
         
         return true

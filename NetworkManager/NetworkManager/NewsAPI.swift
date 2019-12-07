@@ -9,20 +9,22 @@
 import Foundation
 
 // TODO: Move somewhere else later
-private let baseURL = "https://newsapi.org/v2"
-
 private let apiKey = "0c38053a562747a4bff311490c1ad6be"
 
 typealias Parameters = [String: Any]
 
-typealias HTTPHeaders = [String: String]
-
 enum NewsAPI {
+    
     case everything(model: ArticleInput)
     case topHeadlines(model: ArticleInput)
 }
 
-extension NewsAPI {
+extension NewsAPI: ApiProvider {
+    
+    var baseURL: URL {
+        return URL(string: "https://newsapi.org/v2")!
+    }
+    
     var path: String {
         switch self {
         case .everything:
@@ -39,7 +41,7 @@ extension NewsAPI {
         }
     }
     
-    var headers: HTTPHeaders {
+    var headers: [String: String] {
         switch self {
         case .everything, .topHeadlines:
             return ["Content-Type": "application/json",
@@ -51,13 +53,6 @@ extension NewsAPI {
         switch self {
         case .everything, .topHeadlines:
             return .get
-        }
-    }
-    
-    var fullURL: URL {
-        switch self {
-        case .everything, .topHeadlines:
-            return URL(string: baseURL)!.appendingPathComponent(path)
         }
     }
 }
