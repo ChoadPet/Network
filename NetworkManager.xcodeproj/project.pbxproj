@@ -127,6 +127,8 @@
 				29DD8D22239AF89200A2669F /* AppDelegate.swift */,
 				29DD8D26239AF89200A2669F /* ViewController.swift */,
 				29DD8D28239AF89200A2669F /* Main.storyboard */,
+				29DD8D4F239C194C00A2669F /* InputModels */,
+				29DD8D50239C195400A2669F /* OutputModels */,
 				29DD8D44239C079200A2669F /* NetworkManager */,
 				29248AF4239C428A00CE57BC /* Extensions */,
 				29248AF8239C451300CE57BC /* SupportingFiles */,
@@ -147,8 +149,6 @@
 			isa = PBXGroup;
 			children = (
 				29248AF7239C44F800CE57BC /* RequestManager */,
-				29DD8D50239C195400A2669F /* OutputModels */,
-				29DD8D4F239C194C00A2669F /* InputModels */,
 				29248AF0239C3D4300CE57BC /* NetworkManager.swift */,
 				29DD8D4B239C109600A2669F /* NewsAPI.swift */,
 			);

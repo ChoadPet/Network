@@ -26,7 +26,8 @@ final class RequestManager<Api: ApiProvider> {
     
     // MARK: - Private API
     @discardableResult
-    private func createDataTask(with request: URLRequest, completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
+    private func createDataTask(with request: URLRequest,
+                                completion: @escaping (Data?, URLResponse?, Error?) -> Void) -> URLSessionDataTask {
         return session.dataTask(with: request, completionHandler: completion)
     }
     
