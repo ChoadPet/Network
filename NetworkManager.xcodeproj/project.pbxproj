@@ -13,6 +13,9 @@
 		29DD8D2C239AF89400A2669F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 29DD8D2B239AF89400A2669F /* Assets.xcassets */; };
 		29DD8D2F239AF89400A2669F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 29DD8D2D239AF89400A2669F /* LaunchScreen.storyboard */; };
 		29DD8D3A239AF89400A2669F /* NetworkManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD8D39239AF89400A2669F /* NetworkManagerTests.swift */; };
+		29DD8D46239C07A100A2669F /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD8D45239C07A100A2669F /* NetworkManager.swift */; };
+		29DD8D48239C082500A2669F /* ArticleOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD8D47239C082500A2669F /* ArticleOutput.swift */; };
+		29DD8D4A239C08A000A2669F /* ArticleInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 29DD8D49239C08A000A2669F /* ArticleInput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,9 @@
 		29DD8D35239AF89400A2669F /* NetworkManagerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = NetworkManagerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		29DD8D39239AF89400A2669F /* NetworkManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManagerTests.swift; sourceTree = "<group>"; };
 		29DD8D3B239AF89400A2669F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		29DD8D45239C07A100A2669F /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		29DD8D47239C082500A2669F /* ArticleOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleOutput.swift; sourceTree = "<group>"; };
+		29DD8D49239C08A000A2669F /* ArticleInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArticleInput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +83,7 @@
 		29DD8D21239AF89200A2669F /* NetworkManager */ = {
 			isa = PBXGroup;
 			children = (
+				29DD8D44239C079200A2669F /* NetworkManager */,
 				29DD8D22239AF89200A2669F /* AppDelegate.swift */,
 				29DD8D26239AF89200A2669F /* ViewController.swift */,
 				29DD8D28239AF89200A2669F /* Main.storyboard */,
@@ -94,6 +101,16 @@
 				29DD8D3B239AF89400A2669F /* Info.plist */,
 			);
 			path = NetworkManagerTests;
+			sourceTree = "<group>";
+		};
+		29DD8D44239C079200A2669F /* NetworkManager */ = {
+			isa = PBXGroup;
+			children = (
+				29DD8D45239C07A100A2669F /* NetworkManager.swift */,
+				29DD8D47239C082500A2669F /* ArticleOutput.swift */,
+				29DD8D49239C08A000A2669F /* ArticleInput.swift */,
+			);
+			path = NetworkManager;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -197,8 +214,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				29DD8D46239C07A100A2669F /* NetworkManager.swift in Sources */,
+				29DD8D4A239C08A000A2669F /* ArticleInput.swift in Sources */,
 				29DD8D27239AF89200A2669F /* ViewController.swift in Sources */,
 				29DD8D23239AF89200A2669F /* AppDelegate.swift in Sources */,
+				29DD8D48239C082500A2669F /* ArticleOutput.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

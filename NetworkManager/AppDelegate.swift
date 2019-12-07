@@ -12,9 +12,17 @@ import UIKit
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var networkManager: NetworkManager!
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        networkManager = NetworkManager()
+        
+        let model = ArticleInput(pageSize: 5, page: 1, language: "en", keywordsOrPhrase: "dogs")
+        networkManager.requestNews(model: model) { response in
+            
+        }
+        
         return true
     }
 
