@@ -18,13 +18,11 @@ final class NetworkManager {
     
     // MARK: - Public API
     func requestNews(model: ArticleInput, completion: @escaping (ArticleOutput?) -> Void) {
-        request(api: .everything(model: model)) { result in
+        request(api: .everything(model: model)) { [weak self] result in
+            guard let self = self else { return }
             switch result {
             case .success(let data):
-//                let decoder = JSONDecoder()
-//                decoder.dateDecodingStrategy = .iso8601
-//                let articles = try? decoder.decode(ArticleOutput.self, from: data)
-                let articles = 
+                let articles = self.decodeData(data, ofType: ArticleOutput.self)
                 completion(articles)
                 print("Articles information: \(String(describing: articles))")
             case .failure(let error):
@@ -49,9 +47,11 @@ final class NetworkManager {
         }.resume()
     }
     
-    private func decodeData<DecodableType: Decodable>(_ data: Data, ofType type: DecodableType) -> DecodableType? {
+    private func decodeData<DecodableType: Decodable>(_ data: Data,
+                                                      ofType type: DecodableType.Type,
+                                                      dataDecodingStrategy: JSONDecoder.DateDecodingStrategy = .iso8601) -> DecodableType? {
         let decoder = JSONDecoder()
-        decoder.dateDecodingStrategy = .iso8601
+        decoder.dateDecodingStrategy = dataDecodingStrategy
         let decodedData = try? decoder.decode(DecodableType.self, from: data)
         return decodedData
     }

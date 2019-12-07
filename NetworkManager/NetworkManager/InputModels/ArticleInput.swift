@@ -6,8 +6,8 @@
 //  Copyright © 2019 vpoltave. All rights reserved.
 //
 
-
 import Foundation
+
 struct ArticleInput: Encodable {
     let pageSize: Int
     let page: Int
