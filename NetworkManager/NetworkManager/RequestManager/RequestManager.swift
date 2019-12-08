@@ -61,3 +61,11 @@ extension RequestManager: RequestManagerProvider {
         }.resume()
     }
 }
+
+extension URL {
+    
+    init(api: ApiProvider) {
+        self = api.baseURL.appendingPathComponent(api.path)
+    }
+}
+
